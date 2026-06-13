@@ -1,0 +1,29 @@
+import Link from "next/link";
+import Image from "next/image";
+import { Home, ArrowLeft } from "lucide-react";
+
+export default function NotFound() {
+  return (
+    <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
+      <Image
+        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2000&q=80"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-forest-900/80" />
+      <div className="container-x relative text-center text-cream">
+        <p className="font-display text-7xl font-semibold text-gold-light sm:text-9xl">404</p>
+        <h1 className="mt-4 font-display text-3xl sm:text-4xl">You've wandered off the path</h1>
+        <p className="mx-auto mt-3 max-w-md text-cream/75">
+          The page you're looking for has slipped into the gardens. Let's get you back.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Link href="/" className="btn-primary"><Home size={16} /> Back home</Link>
+          <Link href="/rooms" className="btn-outline"><ArrowLeft size={16} /> Browse rooms</Link>
+        </div>
+      </div>
+    </section>
+  );
+}
