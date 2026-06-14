@@ -2,18 +2,39 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import type { MouseEvent } from "react";
 import { ArrowRight, Users, Maximize } from "lucide-react";
 import type { Room } from "@/lib/data";
 
 export function RoomCard({ room, index = 0 }: { room: Room; index?: number }) {
+  // Mouse-tracked 3D tilt
+  const mx = useMotionValue(0.5);
+  const my = useMotionValue(0.5);
+  const rotateX = useSpring(useTransform(my, [0, 1], [7, -7]), { stiffness: 200, damping: 18 });
+  const rotateY = useSpring(useTransform(mx, [0, 1], [-7, 7]), { stiffness: 200, damping: 18 });
+
+  function onMove(e: MouseEvent<HTMLElement>) {
+    const r = e.currentTarget.getBoundingClientRect();
+    mx.set((e.clientX - r.left) / r.width);
+    my.set((e.clientY - r.top) / r.height);
+  }
+  function onLeave() {
+    mx.set(0.5);
+    my.set(0.5);
+  }
+
   return (
     <motion.article
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      style={{ rotateX, rotateY, transformPerspective: 900 }}
       variants={{
         hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: index * 0.1 } },
       }}
-      className="group relative flex flex-col overflow-hidden rounded-3xl bg-white shadow-soft ring-1 ring-forest/5"
+      whileHover={{ y: -6 }}
+      className="group relative flex flex-col overflow-hidden rounded-3xl bg-white shadow-soft ring-1 ring-forest/5 [transform-style:preserve-3d]"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image

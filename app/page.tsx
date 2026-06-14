@@ -1,4 +1,5 @@
 import { Hero } from "@/components/home/Hero";
+import { Marquee } from "@/components/home/Marquee";
 import {
   StatsBar,
   RoomsPreview,
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Hero />
       <StatsBar />
       <RoomsPreview />
+      <Marquee />
       <ActivitiesStrip />
       <AboutTeaser />
       <DiningHighlight />
