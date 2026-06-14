@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { rooms } from "@/lib/data";
+import { rooms, site, photos } from "@/lib/data";
 import { PageHero } from "@/components/PageHero";
 import { RoomCard } from "@/components/RoomCard";
 import { Stagger, Reveal } from "@/components/ui/Reveal";
 import { MessageCircle } from "lucide-react";
-import { site } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Rooms & Cottages",
@@ -19,7 +18,7 @@ export default function RoomsPage() {
       <PageHero
         title="Rooms & Cottages"
         subtitle="Three garden stays, each with its own character — pick the one that fits your escape."
-        image="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=2000&q=80"
+        image={photos.cottage1}
         crumbs={[{ label: "Rooms" }]}
       />
 

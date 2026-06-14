@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Home, ArrowLeft } from "lucide-react";
+import { photos } from "@/lib/data";
 
 export default function NotFound() {
   return (
     <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
       <Image
-        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2000&q=80"
+        src={photos.waterfall}
         alt=""
         fill
         sizes="100vw"

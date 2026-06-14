@@ -5,7 +5,7 @@ import { Leaf, Heart, Users, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { Reveal, Stagger } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
-import { stats } from "@/lib/data";
+import { stats, photos } from "@/lib/data";
 import { Counter } from "@/components/ui/Counter";
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function AboutPage() {
       <PageHero
         title="A green sanctuary near Nairobi"
         subtitle="Family-owned, nature-first, and built for the moments that matter."
-        image="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2000&q=80"
+        image={photos.waterfall}
         crumbs={[{ label: "About Us" }]}
       />
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
         </div>
         <Reveal>
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-card">
-            <Image src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1200&q=80" alt="Ankara Resort gardens" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+            <Image src={photos.cottage1} alt="An A-frame cottage at Ankara Resort" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
           </div>
         </Reveal>
       </section>

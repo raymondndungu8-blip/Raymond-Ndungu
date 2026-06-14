@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { PageHero } from "@/components/PageHero";
 import { BookingWidget } from "@/components/BookingWidget";
 import { ShieldCheck, Smartphone, Clock } from "lucide-react";
+import { photos } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Book Your Stay",
@@ -20,7 +21,7 @@ export default function BookPage({ searchParams }: { searchParams: { room?: stri
       <PageHero
         title="Book Your Stay"
         subtitle="Four quick steps to your nature escape — confirmed by SMS and email."
-        image="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=2000&q=80"
+        image={photos.cottage1}
         crumbs={[{ label: "Book Now" }]}
       />
 

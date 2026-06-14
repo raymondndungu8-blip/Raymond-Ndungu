@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { GalleryGrid } from "@/components/GalleryGrid";
+import { photos } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -14,7 +15,7 @@ export default function GalleryPage() {
       <PageHero
         title="Gallery"
         subtitle="A glimpse of the gardens, the cottages and the moments in between."
-        image="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=2000&q=80"
+        image={photos.cottage1}
         crumbs={[{ label: "Gallery" }]}
       />
       <section className="container-x py-16 sm:py-24">

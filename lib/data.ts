@@ -53,6 +53,20 @@ export type Room = {
 const u = (id: string, w = 1600) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
+/**
+ * Real Ankara Resort photography supplied by the client (self-hosted in
+ * /public/images). Food close-ups and reviewer avatars still use stock until
+ * the resort provides those shots.
+ */
+export const photos = {
+  sign: "/images/ankara-sign.jpg", // "I ❤ ANKARA" garden dining — signature/hero
+  cottage1: "/images/cottage-1.jpg", // A-frame cottage interior
+  cottage2: "/images/cottage-2.jpg", // cottage, alternate angle
+  restaurant: "/images/restaurant.jpg", // restaurant & bar
+  clubhouse: "/images/clubhouse.jpg", // club house lounge
+  waterfall: "/images/waterfall.jpg", // on-site waterfall / nature
+} as const;
+
 export const rooms: Room[] = [
   {
     slug: "standard-cottage",
@@ -63,13 +77,8 @@ export const rooms: Room[] = [
     capacity: "2 Guests",
     size: "28 m²",
     bed: "1 Queen Bed",
-    image: u("photo-1611892440504-42a792e24d32"),
-    gallery: [
-      u("photo-1611892440504-42a792e24d32"),
-      u("photo-1582719478250-c89cae4dc85b"),
-      u("photo-1631049307264-da0ec9d70304"),
-      u("photo-1560448204-e02f11c3d0e2"),
-    ],
+    image: photos.cottage2,
+    gallery: [photos.cottage2, photos.cottage1, photos.clubhouse, photos.waterfall],
     description:
       "A warm, light-filled cottage opening onto the gardens — the perfect base for a restful weekend in nature. Wake to birdsong, step straight onto the lawns, and unwind far from the city's noise.",
     amenities: ["Free WiFi", "En-suite bathroom", "Garden view", "Free parking", "Daily housekeeping", "Hot shower"],
@@ -83,13 +92,8 @@ export const rooms: Room[] = [
     capacity: "2–3 Guests",
     size: "36 m²",
     bed: "1 King Bed",
-    image: u("photo-1618773928121-c32242e63f39"),
-    gallery: [
-      u("photo-1618773928121-c32242e63f39"),
-      u("photo-1566665797739-1674de7a421a"),
-      u("photo-1590490360182-c33d57733427"),
-      u("photo-1551776235-dde6d482a094"),
-    ],
+    image: photos.cottage1,
+    gallery: [photos.cottage1, photos.cottage2, photos.restaurant, photos.sign],
     description:
       "Refined and spacious, the Deluxe Room pairs a plush king bed with a private balcony framing the resort's greenery. Thoughtful touches and golden-hour light make it a favourite for couples.",
     amenities: ["Free WiFi", "Air conditioning", "Private balcony", "En-suite bathroom", "Smart TV", "Work desk", "Free parking"],
@@ -104,13 +108,8 @@ export const rooms: Room[] = [
     capacity: "2–4 Guests",
     size: "52 m²",
     bed: "1 King + Lounge",
-    image: u("photo-1582719508461-905c673771fd"),
-    gallery: [
-      u("photo-1582719508461-905c673771fd"),
-      u("photo-1591088398332-8a7791972843"),
-      u("photo-1596394516093-501ba68a0ba6"),
-      u("photo-1578683010236-d716f9a3f461"),
-    ],
+    image: photos.cottage1,
+    gallery: [photos.cottage1, photos.clubhouse, photos.cottage2, photos.sign],
     description:
       "The Executive Cottage is the resort at its most generous — a separate lounge, a king bedroom, and wide views of the grounds. Made for anniversaries, milestones, and those who simply want the very best.",
     amenities: ["Free WiFi", "Air conditioning", "Separate lounge", "Premium en-suite", "Private terrace", "Smart TV", "Mini bar", "Free parking"],
@@ -133,7 +132,7 @@ export const activities: Activity[] = [
     name: "Garden Picnics",
     short: "Lazy afternoons on the lawns",
     price: "From KES 1,500 / person",
-    image: u("photo-1526401485004-46910ecc8e51"),
+    image: photos.sign,
     description:
       "Spread out on twelve acres of manicured green with a curated picnic setup — blankets, baskets, and shade beneath the trees. Ideal for families, dates, and lazy Sunday catch-ups.",
     highlights: ["Curated picnic baskets", "Shaded lawn spots", "Kids play area", "Bring-your-own or order in"],
@@ -143,7 +142,7 @@ export const activities: Activity[] = [
     name: "Photoshoots",
     short: "Backdrops that do the work for you",
     price: "From KES 5,000 / session",
-    image: u("photo-1519741497674-611481863552"),
+    image: photos.waterfall,
     description:
       "From pre-wedding to graduation and brand shoots, Ankara's gardens, water features, and golden-hour light give photographers endless backdrops in one location.",
     highlights: ["Multiple garden sets", "Golden-hour light", "Changing facilities", "Drone-friendly grounds"],
@@ -153,7 +152,7 @@ export const activities: Activity[] = [
     name: "Team Building",
     short: "Bring the whole office out",
     price: "Custom group packages",
-    image: u("photo-1517457373958-b7bdd4587205"),
+    image: photos.clubhouse,
     description:
       "Get the team out of the boardroom and into the open. Open lawns, breakout spaces, and full catering make Ankara a natural fit for corporate retreats, seminars, and team days.",
     highlights: ["Open-air activity grounds", "Breakout & seminar spaces", "Group catering", "Tailored programmes"],
@@ -163,7 +162,7 @@ export const activities: Activity[] = [
     name: "Garden Events",
     short: "Weddings, birthdays & celebrations",
     price: "Custom event packages",
-    image: u("photo-1519225421980-715cb0215aed"),
+    image: photos.restaurant,
     description:
       "Say 'I do' or mark a milestone surrounded by greenery. Our event lawns host weddings, baby showers, birthdays, and cocktail receptions with full planning support.",
     highlights: ["Weddings & receptions", "Banquet & cocktail setups", "On-site planning", "Ample guest parking"],
@@ -189,18 +188,12 @@ export type GalleryItem = { src: string; category: string; alt: string };
 export const galleryCategories = ["All", "Rooms", "Dining", "Activities", "Events", "Nature"] as const;
 
 export const gallery: GalleryItem[] = [
-  { src: u("photo-1582719508461-905c673771fd"), category: "Rooms", alt: "Executive cottage interior" },
-  { src: u("photo-1564501049412-61c2a3083791"), category: "Nature", alt: "Resort gardens at golden hour" },
-  { src: u("photo-1519225421980-715cb0215aed"), category: "Events", alt: "Garden wedding setup" },
-  { src: u("photo-1544025162-d76694265947"), category: "Dining", alt: "Grilled platter" },
-  { src: u("photo-1526401485004-46910ecc8e51"), category: "Activities", alt: "Picnic on the lawns" },
-  { src: u("photo-1618773928121-c32242e63f39"), category: "Rooms", alt: "Deluxe room" },
-  { src: u("photo-1505761671935-60b3a7427bad"), category: "Nature", alt: "Pathway through trees" },
-  { src: u("photo-1530103862676-de8c9debad1d"), category: "Events", alt: "Celebration table setting" },
-  { src: u("photo-1517457373958-b7bdd4587205"), category: "Activities", alt: "Team building outdoors" },
-  { src: u("photo-1551024709-8f23befc6f87"), category: "Dining", alt: "Cocktails at the bar" },
-  { src: u("photo-1571896349842-33c89424de2d"), category: "Rooms", alt: "Made-up bed with linens" },
-  { src: u("photo-1441974231531-c6227db76b6e"), category: "Nature", alt: "Forest canopy" },
+  { src: photos.sign, category: "Activities", alt: "The 'I ❤ Ankara' garden dining area" },
+  { src: photos.cottage1, category: "Rooms", alt: "A-frame cottage interior with king bed" },
+  { src: photos.restaurant, category: "Dining", alt: "The restaurant and bar" },
+  { src: photos.waterfall, category: "Nature", alt: "The on-site waterfall" },
+  { src: photos.clubhouse, category: "Events", alt: "Club house lounge and function space" },
+  { src: photos.cottage2, category: "Rooms", alt: "Cottage interior, garden side" },
 ];
 
 export type Review = {

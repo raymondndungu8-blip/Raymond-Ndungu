@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Utensils, Clock } from "lucide-react";
-import { dining } from "@/lib/data";
+import { dining, photos } from "@/lib/data";
 import { PageHero } from "@/components/PageHero";
 import { Reveal, Stagger } from "@/components/ui/Reveal";
 import { EnquiryForm } from "@/components/EnquiryForm";
@@ -19,7 +19,7 @@ export default function DiningPage() {
       <PageHero
         title="Restaurant & Bar"
         subtitle="Fresh plates and golden sundowners, served in the gardens."
-        image="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=2000&q=80"
+        image={photos.restaurant}
         crumbs={[{ label: "Dining" }]}
       />
 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { reviews, site } from "@/lib/data";
+import { reviews, site, photos } from "@/lib/data";
 import { PageHero } from "@/components/PageHero";
 import { ReviewCard } from "@/components/ReviewCard";
 import { Reveal, Stagger } from "@/components/ui/Reveal";
@@ -26,7 +26,7 @@ export default function ReviewsPage() {
       <PageHero
         title="Guest Reviews"
         subtitle="The kind words that keep us doing what we love."
-        image="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=2000&q=80"
+        image={photos.sign}
         crumbs={[{ label: "Reviews" }]}
       />
 

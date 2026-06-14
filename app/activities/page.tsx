@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { activities } from "@/lib/data";
+import { activities, photos } from "@/lib/data";
 import { PageHero } from "@/components/PageHero";
 import { Reveal, Stagger } from "@/components/ui/Reveal";
 
@@ -18,7 +18,7 @@ export default function ActivitiesPage() {
       <PageHero
         title="Activities & Events"
         subtitle="From lazy garden picnics to full-scale weddings and corporate retreats."
-        image="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2000&q=80"
+        image={photos.sign}
         crumbs={[{ label: "Activities" }]}
       />
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Facebook, Instagram } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { EnquiryForm } from "@/components/EnquiryForm";
-import { site } from "@/lib/data";
+import { site, photos } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -23,7 +23,7 @@ export default function ContactPage() {
       <PageHero
         title="Get in touch"
         subtitle="Questions, bookings or event plans — we'd love to hear from you."
-        image="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=2000&q=80"
+        image={photos.waterfall}
         crumbs={[{ label: "Contact" }]}
       />
 

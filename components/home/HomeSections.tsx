@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Tent, Camera, Users, Flower2, Check, Utensils } from "lucide-react";
-import { rooms, activities, stats, reviews, dining, site } from "@/lib/data";
+import { rooms, activities, stats, reviews, dining, site, photos } from "@/lib/data";
 import { Reveal, Stagger } from "@/components/ui/Reveal";
 import { Counter } from "@/components/ui/Counter";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -106,8 +106,8 @@ export function AboutTeaser() {
         <div className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-card">
             <Image
-              src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1200&q=80"
-              alt="A quiet garden path at Ankara Resort"
+              src={photos.waterfall}
+              alt="The on-site waterfall at Ankara Resort"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -228,7 +228,7 @@ export function FinalCTA() {
       <Reveal>
         <div className="relative overflow-hidden rounded-[2.5rem] px-6 py-16 text-center sm:px-12 sm:py-24">
           <Image
-            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2000&q=80"
+            src={photos.sign}
             alt="Evening at Ankara Resort"
             fill
             sizes="100vw"

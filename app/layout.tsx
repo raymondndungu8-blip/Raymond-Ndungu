@@ -42,10 +42,10 @@ export const metadata: Metadata = {
       "A premium family-friendly nature resort in Ongata Rongai. Cottages, dining, picnics, events and team building — minutes from Nairobi.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1200&q=80",
-        width: 1200,
-        height: 630,
-        alt: "Ankara Resort gardens at golden hour",
+        url: "/images/ankara-sign.jpg",
+        width: 2000,
+        height: 1501,
+        alt: "The gardens and dining area at Ankara Resort",
       },
     ],
   },

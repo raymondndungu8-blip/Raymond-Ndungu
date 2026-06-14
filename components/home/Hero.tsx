@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ChevronDown, MapPin, Star } from "lucide-react";
-import { site } from "@/lib/data";
+import { site, photos } from "@/lib/data";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,8 +18,8 @@ export function Hero() {
       {/* Parallax background */}
       <motion.div style={{ y }} className="absolute inset-0 -z-10">
         <Image
-          src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=2400&q=80"
-          alt="Ankara Resort gardens bathed in golden-hour light"
+          src={photos.sign}
+          alt="The gardens and outdoor dining at Ankara Resort"
           fill
           priority
           sizes="100vw"
