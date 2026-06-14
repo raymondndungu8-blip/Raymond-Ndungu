@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
+import { SmartImage } from "@/components/ui/SmartImage";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { gallery, galleryCategories, type GalleryItem } from "@/lib/data";
@@ -48,7 +48,7 @@ export function GalleryGrid() {
                 onClick={() => setLightbox(i)}
                 className="group relative block w-full overflow-hidden rounded-2xl shadow-soft"
               >
-                <Image
+                <SmartImage
                   src={item.src}
                   alt={item.alt}
                   width={800}
@@ -91,7 +91,7 @@ export function GalleryGrid() {
               className="relative h-[80vh] w-full max-w-5xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <Image src={items[lightbox].src} alt={items[lightbox].alt} fill sizes="90vw" className="object-contain" />
+              <SmartImage src={items[lightbox].src} alt={items[lightbox].alt} fill sizes="90vw" className="object-contain" priority />
             </motion.div>
           </motion.div>
         )}

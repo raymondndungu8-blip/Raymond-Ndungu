@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { SmartImage } from "@/components/ui/SmartImage";
 
 export function PageHero({
   title,
@@ -15,7 +15,7 @@ export function PageHero({
 }) {
   return (
     <section className="relative flex h-[52vh] min-h-[360px] items-end overflow-hidden">
-      <Image src={image} alt={title} fill priority sizes="100vw" className="object-cover" />
+      <SmartImage src={image} alt={title} fill priority sizes="100vw" className="object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-forest-900/90 via-forest-900/45 to-forest-900/55" />
       <div className="container-x relative pb-12 pt-28">
         <nav className="mb-4 flex items-center gap-1.5 text-xs text-cream/70">

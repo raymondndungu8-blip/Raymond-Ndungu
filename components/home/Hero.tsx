@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { SmartImage } from "@/components/ui/SmartImage";
 import { useRef } from "react";
 import { ChevronDown, MapPin, Star } from "lucide-react";
 import { site, photos } from "@/lib/data";
@@ -17,7 +17,7 @@ export function Hero() {
     <section ref={ref} className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
       {/* Parallax background */}
       <motion.div style={{ y }} className="absolute inset-0 -z-10">
-        <Image
+        <SmartImage
           src={photos.sign}
           alt="The gardens and outdoor dining at Ankara Resort"
           fill

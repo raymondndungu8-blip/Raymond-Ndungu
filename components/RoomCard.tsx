@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { SmartImage } from "@/components/ui/SmartImage";
 import type { MouseEvent } from "react";
 import { ArrowRight, Users, Maximize } from "lucide-react";
 import type { Room } from "@/lib/data";
@@ -37,7 +37,7 @@ export function RoomCard({ room, index = 0 }: { room: Room; index?: number }) {
       className="group relative flex flex-col overflow-hidden rounded-3xl bg-white shadow-soft ring-1 ring-forest/5 [transform-style:preserve-3d]"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
-        <Image
+        <SmartImage
           src={room.image}
           alt={room.name}
           fill

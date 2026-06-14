@@ -1,12 +1,12 @@
 import Link from "next/link";
-import Image from "next/image";
+import { SmartImage } from "@/components/ui/SmartImage";
 import { Home, ArrowLeft } from "lucide-react";
 import { photos } from "@/lib/data";
 
 export default function NotFound() {
   return (
     <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
-      <Image
+      <SmartImage
         src={photos.waterfall}
         alt=""
         fill

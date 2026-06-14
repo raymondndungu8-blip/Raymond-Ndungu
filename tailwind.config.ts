@@ -53,11 +53,16 @@ const config: Config = {
           "0%": { transform: "scale(1) translate(0, 0)" },
           "100%": { transform: "scale(1.12) translate(-1.5%, -1.5%)" },
         },
+        shimmer: {
+          "0%": { backgroundPosition: "200% 0" },
+          "100%": { backgroundPosition: "-200% 0" },
+        },
       },
       animation: {
         marquee: "marquee 32s linear infinite",
         "fade-up": "fade-up 0.7s ease forwards",
         kenburns: "kenburns 18s ease-out forwards",
+        shimmer: "shimmer 1.6s ease-in-out infinite",
       },
     },
   },

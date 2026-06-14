@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { SmartImage } from "@/components/ui/SmartImage";
 import Link from "next/link";
 import { Leaf, Heart, Users, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
@@ -51,7 +51,7 @@ export default function AboutPage() {
         </div>
         <Reveal>
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-card">
-            <Image src={photos.cottage1} alt="An A-frame cottage at Ankara Resort" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+            <SmartImage src={photos.cottage1} alt="An A-frame cottage at Ankara Resort" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
           </div>
         </Reveal>
       </section>

@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SmartImage } from "@/components/ui/SmartImage";
 
 export function RoomGallery({ images, name }: { images: string[]; name: string }) {
   const [active, setActive] = useState(0);
@@ -19,7 +19,7 @@ export function RoomGallery({ images, name }: { images: string[]; name: string }
             transition={{ duration: 0.4 }}
             className="absolute inset-0"
           >
-            <Image src={images[active]} alt={`${name} — photo ${active + 1}`} fill priority sizes="(max-width:1024px) 100vw, 60vw" className="object-cover" />
+            <SmartImage src={images[active]} alt={`${name} — photo ${active + 1}`} fill priority sizes="(max-width:1024px) 100vw, 60vw" className="object-cover" />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -33,7 +33,7 @@ export function RoomGallery({ images, name }: { images: string[]; name: string }
             }`}
             aria-label={`View photo ${i + 1}`}
           >
-            <Image src={img} alt="" fill sizes="20vw" className="object-cover" />
+            <SmartImage src={img} alt="" fill sizes="20vw" className="object-cover" />
           </button>
         ))}
       </div>

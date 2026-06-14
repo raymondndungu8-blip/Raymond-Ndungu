@@ -67,6 +67,17 @@ body {
   .link-underline {
     @apply relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full;
   }
+
+  .skeleton {
+    @apply animate-shimmer bg-forest/5;
+    background-image: linear-gradient(
+      100deg,
+      rgba(27, 67, 50, 0.06) 30%,
+      rgba(27, 67, 50, 0.12) 50%,
+      rgba(27, 67, 50, 0.06) 70%
+    );
+    background-size: 200% 100%;
+  }
 }
 
 @layer utilities {

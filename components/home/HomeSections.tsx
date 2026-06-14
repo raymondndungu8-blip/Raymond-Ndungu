@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { SmartImage } from "@/components/ui/SmartImage";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Tent, Camera, Users, Flower2, Check, Utensils } from "lucide-react";
@@ -105,7 +105,7 @@ export function AboutTeaser() {
       <Reveal>
         <div className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-card">
-            <Image
+            <SmartImage
               src={photos.waterfall}
               alt="The on-site waterfall at Ankara Resort"
               fill
@@ -186,7 +186,7 @@ export function DiningHighlight() {
                 key={item.name}
                 className={`relative aspect-square overflow-hidden rounded-3xl shadow-soft ${i % 2 ? "translate-y-6" : ""}`}
               >
-                <Image src={item.image} alt={item.name} fill sizes="25vw" className="object-cover transition-transform duration-700 hover:scale-110" />
+                <SmartImage src={item.image} alt={item.name} fill sizes="25vw" className="object-cover transition-transform duration-700 hover:scale-110" />
               </div>
             ))}
           </div>
@@ -227,7 +227,7 @@ export function FinalCTA() {
     <section className="container-x pb-24">
       <Reveal>
         <div className="relative overflow-hidden rounded-[2.5rem] px-6 py-16 text-center sm:px-12 sm:py-24">
-          <Image
+          <SmartImage
             src={photos.sign}
             alt="Evening at Ankara Resort"
             fill

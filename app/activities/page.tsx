@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { SmartImage } from "@/components/ui/SmartImage";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { activities, photos } from "@/lib/data";
@@ -27,7 +27,7 @@ export default function ActivitiesPage() {
           <Reveal key={a.slug}>
             <div className={`grid items-center gap-8 overflow-hidden rounded-[2rem] bg-white shadow-soft ring-1 ring-forest/5 lg:grid-cols-2 ${i % 2 ? "" : ""}`}>
               <div className={`relative aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[340px] ${i % 2 ? "lg:order-2" : ""}`}>
-                <Image src={a.image} alt={a.name} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+                <SmartImage src={a.image} alt={a.name} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
               </div>
               <div className="p-8 sm:p-10">
                 <p className="text-xs font-semibold uppercase tracking-widest text-gold">{a.price}</p>
