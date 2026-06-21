@@ -1,16 +1,20 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
-const variants: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+/**
+ * On touch / coarse-pointer devices we reveal with opacity ONLY (no translate).
+ * Transform-based reveals during scroll can leave GPU compositing "ghost"
+ * trails on some mobile devices — opacity-only animations never do.
+ */
+function useCoarsePointer() {
+  const [coarse, setCoarse] = useState(false);
+  useEffect(() => {
+    setCoarse(window.matchMedia("(hover: none), (pointer: coarse)").matches);
+  }, []);
+  return coarse;
+}
 
 export function Reveal({
   children,
@@ -23,7 +27,18 @@ export function Reveal({
   className?: string;
   as?: "div" | "section" | "li" | "span";
 }) {
+  const coarse = useCoarsePointer();
   const MotionTag = motion[as];
+
+  const variants: Variants = {
+    hidden: { opacity: 0, y: coarse ? 0 : 28 },
+    visible: (i: number = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+    }),
+  };
+
   return (
     <MotionTag
       className={className}

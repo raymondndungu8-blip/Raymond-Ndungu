@@ -10,6 +10,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -17,6 +19,19 @@ body {
   color: #1f2a24;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent iOS Safari from auto-zooming when focusing form controls
+   (any control under 16px triggers the zoom). Keeps the smaller visual
+   size on desktop, bumps to 16px on phones. */
+@media (max-width: 640px) {
+  input,
+  textarea,
+  select,
+  .field {
+    font-size: 16px !important;
+  }
 }
 
 ::selection {

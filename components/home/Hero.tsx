@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { SmartImage } from "@/components/ui/SmartImage";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown, MapPin, Star } from "lucide-react";
 import { site, photos } from "@/lib/data";
 
@@ -13,10 +13,17 @@ export function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
+  // Disable the scroll-linked parallax transform on touch devices to avoid
+  // any GPU compositing artifacts; the Ken Burns CSS animation still plays.
+  const [coarse, setCoarse] = useState(false);
+  useEffect(() => {
+    setCoarse(window.matchMedia("(hover: none), (pointer: coarse)").matches);
+  }, []);
+
   return (
     <section ref={ref} className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
       {/* Parallax background */}
-      <motion.div style={{ y }} className="absolute inset-0 -z-10">
+      <motion.div style={coarse ? undefined : { y }} className="absolute inset-0 -z-10">
         <SmartImage
           src={photos.sign}
           alt="The gardens and outdoor dining at Ankara Resort"

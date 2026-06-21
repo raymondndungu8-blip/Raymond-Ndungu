@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { SmartImage } from "@/components/ui/SmartImage";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { gallery, galleryCategories, type GalleryItem } from "@/lib/data";
 
@@ -17,7 +17,7 @@ export function GalleryGrid() {
   const prev = () => setLightbox((i) => (i === null ? i : (i - 1 + items.length) % items.length));
 
   return (
-    <div>
+    <div className="overflow-x-clip">
       {/* Filters */}
       <div className="mb-10 flex flex-wrap justify-center gap-2.5">
         {galleryCategories.map((c) => (
@@ -33,28 +33,25 @@ export function GalleryGrid() {
         ))}
       </div>
 
-      {/* Masonry */}
-      <LayoutGroup>
-        <motion.div layout className="columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5">
+      {/* Gallery grid */}
+      <motion.div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
             {items.map((item, i) => (
               <motion.button
-                layout
                 key={item.src}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
                 onClick={() => setLightbox(i)}
-                className="group relative block w-full overflow-hidden rounded-2xl shadow-soft"
+                className="group relative aspect-[4/3] overflow-hidden rounded-2xl shadow-soft"
               >
                 <SmartImage
                   src={item.src}
                   alt={item.alt}
-                  width={800}
-                  height={i % 3 === 0 ? 1000 : 600}
+                  fill
                   sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
-                  className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <span className="absolute inset-0 flex items-end bg-gradient-to-t from-forest-900/60 to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100">
                   <span className="text-sm font-medium text-cream">{item.category}</span>
@@ -62,8 +59,7 @@ export function GalleryGrid() {
               </motion.button>
             ))}
           </AnimatePresence>
-        </motion.div>
-      </LayoutGroup>
+      </motion.div>
 
       {/* Lightbox */}
       <AnimatePresence>

@@ -3,12 +3,17 @@
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { SmartImage } from "@/components/ui/SmartImage";
-import type { MouseEvent } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { ArrowRight, Users, Maximize } from "lucide-react";
 import type { Room } from "@/lib/data";
 
 export function RoomCard({ room, index = 0 }: { room: Room; index?: number }) {
-  // Mouse-tracked 3D tilt
+  // Mouse-tracked 3D tilt — desktop pointers only (skipped on touch).
+  const [canHover, setCanHover] = useState(false);
+  useEffect(() => {
+    setCanHover(window.matchMedia("(hover: hover) and (pointer: fine)").matches);
+  }, []);
+
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
   const rotateX = useSpring(useTransform(my, [0, 1], [7, -7]), { stiffness: 200, damping: 18 });
@@ -26,11 +31,11 @@ export function RoomCard({ room, index = 0 }: { room: Room; index?: number }) {
 
   return (
     <motion.article
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
+      onMouseMove={canHover ? onMove : undefined}
+      onMouseLeave={canHover ? onLeave : undefined}
       style={{ rotateX, rotateY, transformPerspective: 900 }}
       variants={{
-        hidden: { opacity: 0, y: 30 },
+        hidden: { opacity: 0, y: canHover ? 30 : 0 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: index * 0.1 } },
       }}
       whileHover={{ y: -6 }}

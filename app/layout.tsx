@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
@@ -56,6 +56,14 @@ export const metadata: Metadata = {
     description: "Cottages, dining, picnics and events in Ongata Rongai — minutes from Nairobi.",
   },
   robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#1B4332",
+  colorScheme: "light",
 };
 
 const jsonLd = {
