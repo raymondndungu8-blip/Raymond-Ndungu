@@ -65,6 +65,8 @@ export const photos = {
   restaurant: "/images/restaurant.jpg", // restaurant & bar
   clubhouse: "/images/clubhouse.jpg", // club house lounge
   waterfall: "/images/waterfall.jpg", // on-site waterfall / nature
+  gardenEvent: "https://d8j0ntlcm91z4.cloudfront.net/user_2yK8DBSNXhIaNeBIzHhT2dAEBkW/hf_20260630_093625_c7bb3f29-937d-4587-ac4f-21e0ae50a339.png", // AI-generated: garden wedding/event setup
+  airportTransfer: "https://d8j0ntlcm91z4.cloudfront.net/user_2yK8DBSNXhIaNeBIzHhT2dAEBkW/hf_20260630_093651_63840164-b896-480b-bfae-50c21d30db33.png", // AI-generated: airport pickup
 } as const;
 
 export const rooms: Room[] = [
@@ -162,10 +164,20 @@ export const activities: Activity[] = [
     name: "Garden Events",
     short: "Weddings, birthdays & celebrations",
     price: "Custom event packages",
-    image: photos.restaurant,
+    image: photos.gardenEvent,
     description:
       "Say 'I do' or mark a milestone surrounded by greenery. Our event lawns host weddings, baby showers, birthdays, and cocktail receptions with full planning support.",
     highlights: ["Weddings & receptions", "Banquet & cocktail setups", "On-site planning", "Ample guest parking"],
+  },
+  {
+    slug: "airport-transfer",
+    name: "Airport Transfer",
+    short: "Door-to-door pickup & drop-off",
+    price: "From KES 2,500 / transfer",
+    image: photos.airportTransfer,
+    description:
+      "Skip the stress of getting here. Our drivers meet you at the airport and bring you straight to the gardens, with the same service available for your return trip.",
+    highlights: ["JKIA & Wilson pickup", "Professional drivers", "Flight tracking", "Round-trip option"],
   },
 ];
 
